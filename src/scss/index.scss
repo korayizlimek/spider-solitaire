@@ -6,9 +6,11 @@
 @import "base/typography";
 
 @import "components/card";
+@import "components/cardDeck";
+@import "components/cardCompleted";
+@import "components/cardSlots";
 
 @import "layout/header";
 @import "layout/footer";
-@import "layout/forms";
 
 @import "pages/home";

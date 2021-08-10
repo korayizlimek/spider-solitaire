@@ -1,6 +1,6 @@
-@mixin grid($gap, $padding) {
+@mixin grid($gap) {
   display: grid;
-  grid-template-columns: auto auto auto auto;
-  padding: $padding;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto;
   gap: $gap;
 }
