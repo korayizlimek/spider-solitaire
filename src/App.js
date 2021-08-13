@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
-import Home from "./views/home/Home";
+import CardTable from "./views/home/CardTable";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Switch>
           <Route path="/">
             <Header />
-            <Home />
+            <CardTable />
             <Footer />
           </Route>
         </Switch>
