@@ -18,13 +18,23 @@ import cardBeck from "../assets/spades/card_back.png";
 import { useDrag } from "react-dnd";
 // import ItemTypes from "../utils/ItemTypes";
 
-const Card = ({ card, order, cardSpan, selectedCardId, deleteCardInSlot }) => {
+const Card = ({
+  card,
+  order,
+  cardSpan,
+  selectedCardId,
+  deleteCardInSlot,
+  canSelectedCardSet,
+}) => {
   const { name, isOpen, suit } = card;
   const cardSrc = suit + name;
+
+  const cards = canSelectedCardSet();
 
   const [{ isDragging, didDrob }, dragRef] = useDrag({
     item: {
       card,
+      cards,
     },
     type: "card",
     collect: (monitor) => ({
@@ -41,6 +51,12 @@ const Card = ({ card, order, cardSpan, selectedCardId, deleteCardInSlot }) => {
   const deleteCard = (card) => {
     didDrob && deleteCardInSlot(card.id);
   };
+
+  const dragcss = () => {
+    isDragging && canSelectedCardSet();
+  };
+
+  dragcss();
 
   return (
     <div

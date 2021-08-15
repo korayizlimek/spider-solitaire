@@ -66,11 +66,16 @@ const CardSlots = ({ drawCards, giveNewCard, doneGiveNewCard }) => {
     setSlots(newSlots);
   };
 
+  // const denemefonk = (index) => {
+  //   console.log("DRAGCARDSET", index, slots[index]);
+  // };
+
   return (
     <div className="card-slots">
       {slots.map((cardsInSlot, index) => (
         <Slot
           deleteDragItemInSlots={() => deleteDragItemInSlots(index)}
+          // denemefonk={() => denemefonk(index)}
           key={index}
           cards={cardsInSlot}
         />
