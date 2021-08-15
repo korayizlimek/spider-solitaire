@@ -14,23 +14,25 @@ const PlayingCardNames = [
   "K",
 ];
 
-const CountOfCard54 = [].concat(
-  PlayingCardNames,
-  PlayingCardNames,
-  PlayingCardNames,
-  PlayingCardNames
-);
+const CountOfCard54 = [
+  ...PlayingCardNames,
+  ...PlayingCardNames,
+  ...PlayingCardNames,
+  ...PlayingCardNames,
+];
 
 const DeckOfCards = CountOfCard54;
 
-const SolitairePlayWithTwoDeckOfCards = [].concat(DeckOfCards, DeckOfCards);
+const SolitairePlayWithTwoDeckOfCards = [...DeckOfCards, ...DeckOfCards];
 
-const UnShuffledGameDeck = SolitairePlayWithTwoDeckOfCards.map((name, i) => ({
-  id: i,
-  value: (i % 13) + 1,
-  name,
-  suit: "S",
-  isOpen: false,
-}));
+const UnShuffledGameDeck = SolitairePlayWithTwoDeckOfCards.map(
+  (name, index) => ({
+    id: index,
+    value: (index % 13) + 1,
+    name,
+    suit: "S",
+    isOpen: false,
+  })
+);
 
 export const getInitialDeck = UnShuffledGameDeck;

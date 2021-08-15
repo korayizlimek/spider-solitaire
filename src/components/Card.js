@@ -15,13 +15,38 @@ import SQ from "../assets/spades/spades_12.png";
 import SK from "../assets/spades/spades_13.png";
 import cardBeck from "../assets/spades/card_back.png";
 
-const Card = ({ card, order, cardSpan, selectedCardId }) => {
+import { useDrag } from "react-dnd";
+// import ItemTypes from "../utils/ItemTypes";
+
+const Card = ({ card, order, cardSpan, selectedCardId, deleteCardInSlot }) => {
   const { name, isOpen, suit } = card;
   const cardSrc = suit + name;
+
+  const [{ isDragging }, dragRef] = useDrag({
+    item: {
+      card,
+    },
+    type: "card",
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+    end: (item) => {
+      deleteCard(item.card);
+    },
+  });
+
+  const oppacity = isDragging ? 0.5 : 1;
+
+  const deleteCard = (card) => {
+    deleteCardInSlot(card.id);
+  };
+
   return (
     <div
+      ref={dragRef}
       className={`card ${card.id === selectedCardId ? " selected" : ""}`}
       style={{
+        opacity: oppacity,
         zIndex: order,
         top: order * cardSpan,
         left: order,
@@ -29,7 +54,7 @@ const Card = ({ card, order, cardSpan, selectedCardId }) => {
       }}
     >
       {isOpen ? (
-        <img className="card-img" src={SK} alt={cardSrc} />
+        <img className="card-img" src={cardSrc} alt={cardSrc} />
       ) : (
         <img className="card-img" src={cardBeck} alt={cardBeck} />
       )}
