@@ -29,12 +29,12 @@ const Card = ({
   const { name, isOpen, suit } = card;
   const cardSrc = suit + name;
 
-  const cards = canSelectedCardSet();
+  const selectedCardSet = canSelectedCardSet();
 
   const [{ isDragging, didDrob }, dragRef] = useDrag({
     item: {
       card,
-      cards,
+      selectedCardSet,
     },
     type: "card",
     collect: (monitor) => ({
@@ -49,14 +49,8 @@ const Card = ({
   const oppacity = isDragging ? 0.5 : 1;
 
   const deleteCard = (card) => {
-    didDrob && deleteCardInSlot(card.id);
+    didDrob && deleteCardInSlot(selectedCardSet.length);
   };
-
-  const dragcss = () => {
-    isDragging && canSelectedCardSet();
-  };
-
-  dragcss();
 
   return (
     <div

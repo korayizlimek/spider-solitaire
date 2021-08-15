@@ -1,4 +1,3 @@
-import { Card } from "@material-ui/core";
 import React, { useState } from "react";
 import ClosedCard from "./ClosedCard";
 
