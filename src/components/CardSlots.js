@@ -68,11 +68,11 @@ const CardSlots = ({ drawCards, giveNewCard, doneGiveNewCard }) => {
 
   return (
     <div className="card-slots">
-      {slots.map((cards, index) => (
+      {slots.map((cardsInSlot, index) => (
         <Slot
           deleteDragItemInSlots={() => deleteDragItemInSlots(index)}
           key={index}
-          cards={cards}
+          cards={cardsInSlot}
         />
       ))}
     </div>

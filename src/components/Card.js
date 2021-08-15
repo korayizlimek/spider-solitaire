@@ -22,13 +22,14 @@ const Card = ({ card, order, cardSpan, selectedCardId, deleteCardInSlot }) => {
   const { name, isOpen, suit } = card;
   const cardSrc = suit + name;
 
-  const [{ isDragging }, dragRef] = useDrag({
+  const [{ isDragging, didDrob }, dragRef] = useDrag({
     item: {
       card,
     },
     type: "card",
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
+      didDrob: !!monitor.didDrop(),
     }),
     end: (item) => {
       deleteCard(item.card);
@@ -38,7 +39,7 @@ const Card = ({ card, order, cardSpan, selectedCardId, deleteCardInSlot }) => {
   const oppacity = isDragging ? 0.5 : 1;
 
   const deleteCard = (card) => {
-    deleteCardInSlot(card.id);
+    didDrob && deleteCardInSlot(card.id);
   };
 
   return (
@@ -46,10 +47,9 @@ const Card = ({ card, order, cardSpan, selectedCardId, deleteCardInSlot }) => {
       ref={dragRef}
       className={`card ${card.id === selectedCardId ? " selected" : ""}`}
       style={{
-        opacity: oppacity,
         zIndex: order,
+        opacity: oppacity,
         top: order * cardSpan,
-        left: order,
         backgroundColor: isOpen ? "white" : "gray",
       }}
     >
