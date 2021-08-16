@@ -4,7 +4,12 @@ import Slot from "./Slot";
 const INITIAL_SLOTS_CARD_COUNT = 54;
 const NEW_CARD_COUNT_WHEN_CARDDEALER_ONCLICK = 10;
 
-const CardSlots = ({ drawCards, giveNewCard, doneGiveNewCard }) => {
+const CardSlots = ({
+  drawCards,
+  giveNewCard,
+  doneGiveNewCard,
+  handleCompletedCardSetCount,
+}) => {
   const [slots, setSlots] = useState([[], [], [], [], [], [], [], [], [], []]);
 
   useEffect(() => {
@@ -73,6 +78,7 @@ const CardSlots = ({ drawCards, giveNewCard, doneGiveNewCard }) => {
           deleteDragItemInSlots={() => deleteDragItemInSlots(index)}
           key={index}
           cards={cardsInSlot}
+          handleCompletedCardSetCount={handleCompletedCardSetCount}
         />
       ))}
     </div>

@@ -42,14 +42,17 @@ const Card = ({
       didDrob: !!monitor.didDrop(),
     }),
     end: (item) => {
-      deleteCard(item.card);
+      deleteCard(item.selectedCardSet);
     },
   });
 
   const oppacity = isDragging ? 0.5 : 1;
 
-  const deleteCard = (card) => {
-    didDrob && deleteCardInSlot(selectedCardSet.length);
+  const deleteCard = (selectedCardSet) => {
+    console.log("cards1", card);
+    didDrob &&
+      selectedCardSet !== undefined &&
+      deleteCardInSlot(selectedCardSet.length);
   };
 
   return (

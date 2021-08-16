@@ -1,10 +1,10 @@
 import CompletedCard from "./CompletedCard";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const COMPLETED_CARD_SLOTS = 8;
 
-const CompletedCards = () => {
-  const [CompeletedSlots, setCompletedSlots] = useState([
+const CompletedCards = ({ completedCardSetCount }) => {
+  const [compeletedSlots, setCompletedSlots] = useState([
     [],
     [],
     [],
@@ -15,10 +15,22 @@ const CompletedCards = () => {
     [],
   ]);
 
+  useEffect(() => {
+    if (completedCardSetCount > 0 && completedCardSetCount <= 8) {
+      const copyCompletedSlots = [...compeletedSlots];
+      const index = completedCardSetCount - 1;
+      const copyCompleteSlot = copyCompletedSlots[index];
+
+      copyCompleteSlot.push("SpadesA");
+
+      setCompletedSlots(copyCompletedSlots);
+    }
+  }, [completedCardSetCount]);
+
   return (
     <div className="completed-cards">
-      {CompeletedSlots.map((card, index) => (
-        <CompletedCard key={index} />
+      {compeletedSlots.map((card, index) => (
+        <CompletedCard card={card} key={index} />
       ))}
     </div>
   );
