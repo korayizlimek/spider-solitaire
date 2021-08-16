@@ -1,5 +1,5 @@
 import React from "react";
-import cardBacks from "../assets/spades/card_back.png";
+import cardBacks from "../assets/images/card_back.png";
 
 const ClosedCard = () => {
   return (

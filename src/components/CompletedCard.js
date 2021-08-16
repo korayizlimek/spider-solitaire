@@ -1,5 +1,5 @@
 import React from "react";
-import SpadesA from "../assets/spades/SpadeA.jpg";
+import SpadesA from "../assets/images/spades/SpadeA.jpg";
 
 const CompletedCard = ({ card }) => {
   console.log("calisti", card);

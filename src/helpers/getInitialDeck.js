@@ -30,7 +30,7 @@ const UnShuffledGameDeck = SolitairePlayWithTwoDeckOfCards.map(
     id: index,
     value: (index % 13) + 1,
     name,
-    suit: "S",
+    suit: "Spade",
     isOpen: false,
   })
 );
