@@ -83,7 +83,6 @@ body {
 
 .slot {
   height: 100%;
-  background-color: pink;
 }
 
 .slot-card {
@@ -116,7 +115,10 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: pink;
+  background-color: #464660;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -125,6 +127,18 @@ header {
   font-size: 20px;
   font-weight: bold;
   padding: 10px;
+  color: #b4b897;
+}
+
+header img {
+  height: 3vw;
+  margin-right: 5px;
+}
+
+header button {
+  background-color: transparent;
+  border: none;
+  color: #b4b897;
 }
 
 .header-section {
@@ -140,7 +154,7 @@ header {
 }
 
 .game-table {
-  background-color: green;
+  background-color: #368b85;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;

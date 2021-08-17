@@ -9,6 +9,7 @@ const CardSlots = ({
   giveNewCard,
   doneGiveNewCard,
   handleCompletedCardSetCount,
+  restart,
 }) => {
   const [slots, setSlots] = useState([[], [], [], [], [], [], [], [], [], []]);
 
@@ -27,9 +28,11 @@ const CardSlots = ({
       lastSixSlotsHasFiveCard(drawCardSet),
       lastSixSlotsHasFiveCard(drawCardSet),
     ];
+
+    initialSlots.map((slots) => closedAllCard(slots));
     initialSlots.map((slots) => openLastCardInSlot(slots));
     setSlots(initialSlots);
-  }, []);
+  }, [restart]);
 
   useEffect(() => {
     if (giveNewCard) {
@@ -61,6 +64,13 @@ const CardSlots = ({
     if (cards.length > 0) {
       cards[cards.length - 1].isOpen = true;
     }
+    return cards;
+  };
+
+  const closedAllCard = (cards) => {
+    cards.map((card) => {
+      card.isOpen = false;
+    });
     return cards;
   };
 

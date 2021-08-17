@@ -1,12 +1,24 @@
 header {
   display: flex;
-  background-color: pink;
-  // justify-content: center;
+  background-color: #464660;
+  justify-content: center;
   align-items: center;
   justify-content: space-around;
   font-size: 20px;
   font-weight: bold;
   padding: 10px;
+  color: #b4b897;
+
+  img {
+    height: 3vw;
+    margin-right: 5px;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: #b4b897;
+  }
 }
 
 .header-section {
