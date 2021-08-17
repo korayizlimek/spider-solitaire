@@ -15,38 +15,38 @@ import SpadeQ from "../assets/images/spades/spades_12.png";
 import SpadeK from "../assets/images/spades/spades_13.png";
 import cardBeck from "../assets/images/card_back.png";
 
-import Spade8 from "../assets/images/spades/spades_08.png";
-
-const cardImage = name + suit; //Spade8
-
-<img className="card-img" src={cardImage} alt={cardImage} />;
-
 import { useDrag } from "react-dnd";
+
+const TOP_ORDER_HEIGHT_COUNT = 2;
 
 const Card = ({
   card,
   order,
-  cardSpan,
   selectedCardId,
   deleteCardInSlot,
   canSelectedCardSet,
 }) => {
   const { name, suit, isOpen } = card;
-  const cardImageMap = new Map([
-    ["SpadeA", SpadeA],
-    ["Spade2", Spade2],
-    ["Spade3", Spade3],
-    ["Spade4", Spade4],
-    ["Spade5", Spade5],
-    ["Spade6", Spade6],
-    ["Spade7", Spade7],
-    ["Spade8", Spade8],
-    ["Spade9", Spade9],
-    ["Spade10", Spade10],
-    ["SpadeJ", SpadeJ],
-    ["SpadeQ", SpadeQ],
-    ["SpadeK", SpadeK],
-  ]);
+
+  const cardImages = {
+    SpadeA,
+    Spade2,
+    Spade3,
+    Spade4,
+    Spade5,
+    Spade6,
+    Spade7,
+    Spade8,
+    Spade9,
+    Spade10,
+    SpadeJ,
+    SpadeQ,
+    SpadeK,
+  };
+
+  const cardImage = cardImages[`${suit}${name}`];
+
+  const selectedCardSet = canSelectedCardSet();
 
   const [{ isDragging, didDrob }, dragRef] = useDrag({
     item: {
@@ -76,10 +76,9 @@ const Card = ({
       ref={dragRef}
       className={`card ${card.id === selectedCardId ? " selected" : ""}`}
       style={{
-        zIndex: order,
         opacity: oppacity,
-        top: order * cardSpan,
-        backgroundColor: isOpen ? "white" : "gray",
+        zIndex: order,
+        top: `${order * TOP_ORDER_HEIGHT_COUNT}vw`,
       }}
     >
       {isOpen ? (

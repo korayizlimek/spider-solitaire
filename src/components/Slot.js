@@ -114,7 +114,6 @@ const Slot = ({
             key={card.id}
             card={card}
             order={index}
-            cardSpan={20}
             selectedCardId={selectedCardId}
           />
         ))}

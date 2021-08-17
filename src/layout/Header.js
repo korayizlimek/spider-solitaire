@@ -1,23 +1,56 @@
-import React from "react";
-import TimerIcon from "@material-ui/icons/Timer";
-import WhatshotIcon from "@material-ui/icons/Whatshot";
-import RefreshIcon from "@material-ui/icons/Refresh";
+import React, { useEffect, useRef, useState } from "react";
 
-const Header = () => {
+//icons
+import cup from "../assets/svg/icons/trophy.svg";
+import restart from "../assets/svg/icons/restart.svg";
+import sandClock from "../assets/svg/icons/sand-clock.svg";
+
+const Header = ({ pressRestart }) => {
+  const [seconds, setSeconds] = useState(55);
+  const [minutes, setMinutes] = useState(0);
+
+  const interval = useRef(null);
+
+  useEffect(() => {
+    startCounter();
+  }, []);
+
+  useEffect(() => {
+    if (seconds === 60) {
+      setSeconds(0);
+      setMinutes(minutes + 1);
+    }
+  }, [seconds]);
+
+  const startCounter = () =>
+    (interval.current = setInterval(() => {
+      setSeconds((prevState) => prevState + 1);
+    }, 1000));
+
+  const stopCounter = () => clearInterval(interval.current);
+
   return (
     <header className="header">
       <div className="header-section time-section">
-        <TimerIcon style={{ fontSize: 50, color: "red" }} />
-        <p>: 00:00:39</p>
+        <button onClick={() => stopCounter()}>onclick</button>
+        <img src={sandClock} alt="sandClock icon" />
+        <p>
+          {minutes}:{seconds}
+        </p>
       </div>
       <div className="header-section score-section">
-        <WhatshotIcon style={{ fontSize: 50, color: "red" }} />
-        <p>Hightest Score Ever : 9999</p>
+        <img src={cup} alt="cup icon" />
+        <p>99999</p>
       </div>
-      <div className="header-section restart-section">
-        <RefreshIcon style={{ fontSize: 50, color: "red" }} />
+      <button
+        onClick={() => {
+          pressRestart();
+        }}
+        className="header-section restart-section"
+      >
+        <img src={restart} alt="restart icon" />
         <p>Restart</p>
-      </div>
+      </button>
     </header>
   );
 };

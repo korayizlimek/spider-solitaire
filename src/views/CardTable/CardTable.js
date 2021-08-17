@@ -45,7 +45,7 @@ const CardTable = () => {
           <CompletedCards completedCardSetCount={completedCardSetCount} />
         </div>
       </div>
-      <div className="game-table-bottoms">
+      <div className="game-table-bottom">
         <CardSlots
           drawCards={drawCards}
           giveNewCard={giveNewCard}

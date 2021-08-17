@@ -3,12 +3,18 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 1vw 5vw;
 }
 
 .game-table-top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 1vw;
+}
+
+.game-table-bottom {
+  margin: 1vw;
 }
 
 .game-table-top-card-dealer {
