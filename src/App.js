@@ -31,7 +31,12 @@ function App() {
   return (
     <div className="App">
       <DndProvider backend={HTML5Backend}>
-        <Header pressRestart={pressRestart} score={score} gameOver={gameOver} />
+        <Header
+          pressRestart={pressRestart}
+          restart={restart}
+          score={score}
+          gameOver={gameOver}
+        />
         <Section
           restart={restart}
           score={score}

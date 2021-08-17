@@ -1,23 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 
 //icons
-import cup from "../assets/svg/icons/trophy.svg";
-import restart from "../assets/svg/icons/restart.svg";
-import sandClock from "../assets/svg/icons/sand-clock.svg";
+import cupIcon from "../assets/svg/icons/trophy.svg";
+import restartIcon from "../assets/svg/icons/restart.svg";
+import sandClockIcon from "../assets/svg/icons/sand-clock.svg";
 
-const Header = ({ pressRestart, score, gameOver }) => {
+const Header = ({ restart, pressRestart, score, gameOver }) => {
   const [seconds, setSeconds] = useState(55);
   const [minutes, setMinutes] = useState(0);
-
-  const interval = useRef(null);
-
-  useEffect(() => {
-    startCounter();
-  }, []);
 
   useEffect(() => {
     if (gameOver === true) {
       stopCounter();
+    } else {
+      startCounter();
+      setSeconds(0);
+      setMinutes(0);
     }
   }, [gameOver]);
 
@@ -28,24 +26,26 @@ const Header = ({ pressRestart, score, gameOver }) => {
     }
   }, [seconds]);
 
+  const interval = useRef(null);
+
+  const stopCounter = () => clearInterval(interval.current);
+
   const startCounter = () =>
     (interval.current = setInterval(() => {
       setSeconds((prevState) => prevState + 1);
     }, 1000));
 
-  const stopCounter = () => clearInterval(interval.current);
-
   return (
     <header className="header">
       <div className="header-section time-section">
         <button onClick={() => stopCounter()}>onclick</button>
-        <img src={sandClock} alt="sandClock icon" />
+        <img src={sandClockIcon} alt="sandClock icon" />
         <p>
           {minutes}:{seconds}
         </p>
       </div>
       <div className="header-section score-section">
-        <img src={cup} alt="cup icon" />
+        <img src={cupIcon} alt="cup icon" />
         <p>{score}</p>
       </div>
       <button
@@ -54,7 +54,7 @@ const Header = ({ pressRestart, score, gameOver }) => {
         }}
         className="header-section restart-section"
       >
-        <img src={restart} alt="restart icon" />
+        <img src={restartIcon} alt="restart icon" />
         <p>Restart</p>
       </button>
     </header>

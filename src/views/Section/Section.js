@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import CardTable from "../CardTable/CardTable";
 import Leadership from "../Leadership/Leadership";
 

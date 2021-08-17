@@ -52,10 +52,11 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
   return (
     <div className="game-table">
       <div className="game-table-top">
-        <button onClick={() => handleCompletedCardSetCount()}>AAAAAA</button>
+        <button onClick={() => handleCompletedCardSetCount()}>HACK</button>
         <div className="game-table-top-card-dealer">
           <CardDealer
             giveNewCardWhenCardDealerOnClick={giveNewCardWhenCardDealerOnClick}
+            restart={restart}
           />
         </div>
         <div className="game-table-top-completed-cards">
