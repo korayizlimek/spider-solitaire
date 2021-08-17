@@ -49,7 +49,6 @@ const Slot = ({
   const canSelectedCardSet = (index) => {
     const selectedCardSet = cards.slice(index, cards.length);
     const isRulesCorrect = isRulesCorrectCardSet(selectedCardSet);
-
     if (isRulesCorrect) {
       return selectedCardSet;
     }
@@ -57,8 +56,8 @@ const Slot = ({
 
   const isRulesCorrectCardSet = (selectedCardSet) => {
     if (selectedCardSet.length === 1) {
-      const canBeDropped = true;
-      return canBeDropped;
+      const canBeDrag = true;
+      return canBeDrag;
     } else {
       for (let i = 0; i < selectedCardSet.length - 1; i++) {
         const element = selectedCardSet[i];
@@ -69,12 +68,12 @@ const Slot = ({
 
         const isRulesCorrect = cardRules(elementValue, childElementValue);
         if (isRulesCorrect === false) {
-          const canBeDropped = false;
-          return canBeDropped;
+          const canBeDrag = false;
+          return canBeDrag;
         }
       }
-      const canBeDropped = true;
-      return canBeDropped;
+      const canBeDrag = true;
+      return canBeDrag;
     }
   };
 
@@ -99,9 +98,20 @@ const Slot = ({
   };
 
   const deleteCardInSlot = (index) => {
-    console.log("index", index);
     const deleteItemCount = index;
     [...Array(deleteItemCount)].forEach(() => deleteDragItemInSlots());
+  };
+
+  const handleTopOrderCount = () => {
+    let topOrderCount = cards.length > 10 ? 1.5 : 2;
+    if (cards.length < 10) {
+      topOrderCount = 2;
+    } else if (cards.length < 15) {
+      topOrderCount = 1.65;
+    } else {
+      topOrderCount = 1.3;
+    }
+    return topOrderCount;
   };
 
   return (
@@ -115,6 +125,7 @@ const Slot = ({
             card={card}
             order={index}
             selectedCardId={selectedCardId}
+            topOrderCount={handleTopOrderCount()}
           />
         ))}
       </div>

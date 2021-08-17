@@ -5,7 +5,7 @@ import cup from "../assets/svg/icons/trophy.svg";
 import restart from "../assets/svg/icons/restart.svg";
 import sandClock from "../assets/svg/icons/sand-clock.svg";
 
-const Header = ({ pressRestart }) => {
+const Header = ({ pressRestart, score }) => {
   const [seconds, setSeconds] = useState(55);
   const [minutes, setMinutes] = useState(0);
 
@@ -40,7 +40,7 @@ const Header = ({ pressRestart }) => {
       </div>
       <div className="header-section score-section">
         <img src={cup} alt="cup icon" />
-        <p>99999</p>
+        <p>{score}</p>
       </div>
       <button
         onClick={() => {

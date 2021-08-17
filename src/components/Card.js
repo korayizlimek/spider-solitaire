@@ -1,4 +1,7 @@
 import React from "react";
+import { useDrag } from "react-dnd";
+
+import { notify } from "../helpers/Toastify";
 
 import SpadeA from "../assets/images/spades/spades_01.png";
 import Spade2 from "../assets/images/spades/spades_02.png";
@@ -15,16 +18,13 @@ import SpadeQ from "../assets/images/spades/spades_12.png";
 import SpadeK from "../assets/images/spades/spades_13.png";
 import cardBeck from "../assets/images/card_back.png";
 
-import { useDrag } from "react-dnd";
-
-const TOP_ORDER_HEIGHT_COUNT = 2;
-
 const Card = ({
   card,
   order,
   selectedCardId,
   deleteCardInSlot,
   canSelectedCardSet,
+  topOrderCount,
 }) => {
   const { name, suit, isOpen } = card;
 
@@ -66,9 +66,13 @@ const Card = ({
   const oppacity = isDragging ? 0.5 : 1;
 
   const deleteCard = (selectedCardSet) => {
-    didDrob &&
-      selectedCardSet !== undefined &&
-      deleteCardInSlot(selectedCardSet.length);
+    if (didDrob === true) {
+      selectedCardSet !== undefined && deleteCardInSlot(selectedCardSet.length);
+    } else {
+      notify(
+        "You can only put a card on another card if it is the next card in sequence. The order is : Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King !"
+      );
+    }
   };
 
   return (
@@ -78,7 +82,7 @@ const Card = ({
       style={{
         opacity: oppacity,
         zIndex: order,
-        top: `${order * TOP_ORDER_HEIGHT_COUNT}vw`,
+        top: `${order * topOrderCount}vw`,
       }}
     >
       {isOpen ? (

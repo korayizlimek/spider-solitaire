@@ -8,7 +8,7 @@ import { getInitialDeck } from "../../helpers/getInitialDeck";
 
 const unShuffledDeck = getInitialDeck;
 
-const CardTable = ({ restart }) => {
+const CardTable = ({ restart, addScore }) => {
   const shuffedDeck = () => shuffle(unShuffledDeck);
 
   const [gameDeck, setGameDeck] = useState(shuffedDeck);
@@ -36,6 +36,7 @@ const CardTable = ({ restart }) => {
 
   const giveNewCardWhenCardDealerOnClick = () => {
     setGiveNewCard(true);
+    addScore(50, false);
   };
 
   const doneGiveNewCard = () => {
@@ -44,6 +45,7 @@ const CardTable = ({ restart }) => {
 
   const handleCompletedCardSetCount = () => {
     setCompletedCardSetCount(completedCardSetCount + 1);
+    addScore(500, true);
   };
 
   return (
