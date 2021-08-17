@@ -7,6 +7,7 @@ const Slot = ({
   selectedCardId,
   deleteDragItemInSlots,
   handleCompletedCardSetCount,
+  addScore,
 }) => {
   const [{ isOver }, dropRef] = useDrop({
     accept: "card",
@@ -126,6 +127,7 @@ const Slot = ({
             order={index}
             selectedCardId={selectedCardId}
             topOrderCount={handleTopOrderCount()}
+            addScore={addScore}
           />
         ))}
       </div>

@@ -5,21 +5,22 @@ import CompletedCards from "../../components/CompletedCards";
 
 import { shuffle } from "../../helpers/shuffle";
 import { getInitialDeck } from "../../helpers/getInitialDeck";
+import { Link, Redirect } from "react-router-dom";
 
 const unShuffledDeck = getInitialDeck;
 
-const CardTable = ({ restart, addScore }) => {
+const COMPLETE_CARD_COUNT_FOR_GAME_OVER = 8;
+
+const CardTable = ({ restart, addScore, runGameOver }) => {
   const shuffedDeck = () => shuffle(unShuffledDeck);
 
   const [gameDeck, setGameDeck] = useState(shuffedDeck);
   const [giveNewCard, setGiveNewCard] = useState(false);
   const [completedCardSetCount, setCompletedCardSetCount] = useState(0);
-  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
-    setGameOver(true);
-    if (completedCardSetCount === 8) {
-      console.log("GamerOver");
+    if (completedCardSetCount === COMPLETE_CARD_COUNT_FOR_GAME_OVER) {
+      runGameOver();
     }
   }, [completedCardSetCount]);
 
@@ -68,6 +69,7 @@ const CardTable = ({ restart, addScore }) => {
           giveNewCard={giveNewCard}
           doneGiveNewCard={doneGiveNewCard}
           handleCompletedCardSetCount={handleCompletedCardSetCount}
+          addScore={addScore}
         />
       </div>
     </div>

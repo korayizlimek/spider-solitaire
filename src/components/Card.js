@@ -25,6 +25,7 @@ const Card = ({
   deleteCardInSlot,
   canSelectedCardSet,
   topOrderCount,
+  addScore,
 }) => {
   const { name, suit, isOpen } = card;
 
@@ -68,6 +69,7 @@ const Card = ({
   const deleteCard = (selectedCardSet) => {
     if (didDrob === true) {
       selectedCardSet !== undefined && deleteCardInSlot(selectedCardSet.length);
+      addScore(10, false);
     } else {
       notify(
         "You can only put a card on another card if it is the next card in sequence. The order is : Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King !"

@@ -5,7 +5,7 @@ import cup from "../assets/svg/icons/trophy.svg";
 import restart from "../assets/svg/icons/restart.svg";
 import sandClock from "../assets/svg/icons/sand-clock.svg";
 
-const Header = ({ pressRestart, score }) => {
+const Header = ({ pressRestart, score, gameOver }) => {
   const [seconds, setSeconds] = useState(55);
   const [minutes, setMinutes] = useState(0);
 
@@ -14,6 +14,12 @@ const Header = ({ pressRestart, score }) => {
   useEffect(() => {
     startCounter();
   }, []);
+
+  useEffect(() => {
+    if (gameOver === true) {
+      stopCounter();
+    }
+  }, [gameOver]);
 
   useEffect(() => {
     if (seconds === 60) {

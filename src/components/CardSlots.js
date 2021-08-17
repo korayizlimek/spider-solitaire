@@ -10,6 +10,7 @@ const CardSlots = ({
   doneGiveNewCard,
   handleCompletedCardSetCount,
   restart,
+  addScore,
 }) => {
   const [slots, setSlots] = useState([[], [], [], [], [], [], [], [], [], []]);
 
@@ -89,6 +90,7 @@ const CardSlots = ({
           key={index}
           cards={cardsInSlot}
           handleCompletedCardSetCount={handleCompletedCardSetCount}
+          addScore={addScore}
         />
       ))}
     </div>
