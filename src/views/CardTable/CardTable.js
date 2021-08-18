@@ -5,7 +5,6 @@ import CompletedCards from "../../components/CompletedCards";
 
 import { shuffle } from "../../helpers/shuffle";
 import { getInitialDeck } from "../../helpers/getInitialDeck";
-import { Link, Redirect } from "react-router-dom";
 
 const unShuffledDeck = getInitialDeck;
 

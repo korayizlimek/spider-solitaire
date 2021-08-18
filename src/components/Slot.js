@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "./Card";
 import { useDrop } from "react-dnd";
 import { cardRules, isRulesCorrectCardSet } from "../helpers/cardRules";
 import { canDropRules } from "../helpers/dropRules";
-import { deleteCardInSlot } from "../helpers/deleteCard";
 import {
   canSelectedCardSet,
   isOneCardSetCompleted,
 } from "../helpers/cartControls";
-import { addCardInSlot } from "../helpers/addCard";
+// import { addCardInSlot } from "../helpers/addCard";
+import { deleteCardInSlot } from "../helpers/SlotControls";
+import { DndDrop } from "../helpers/DndControls";
+import { useState } from "react";
 
 const Slot = ({
   cards,
@@ -17,29 +19,24 @@ const Slot = ({
   handleCompletedCardSetCount,
   addScore,
 }) => {
-  const [{ isOver, canDrop, didDrob }, dropRef] = useDrop({
-    accept: "card",
-    drop: (item) => addCardInSlot(item.selectedCardSet, cards),
-    canDrop: (item) => canDropRules(item.card, cards),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-      canDrop: !!monitor.canDrop(),
-      didDrob: !!monitor.didDrop(),
-    }),
-  });
+  const [isAddCard, setIsAddCard] = useState(false);
+  const { dropRef } = DndDrop(cards, setIsAddCard);
 
-  // const addCardInSlot = (selectedCardSet) => {
-  //   selectedCardSet?.forEach((card) => {
-  //     cards.push(card);
-  //   });
+  useEffect(() => {
+    if (isAddCard === true) {
+      isOneCardSetCompleted(
+        cards,
+        deleteCardInSlot,
+        handleCompletedCardSetCount
+      );
 
-  //!
-  //   isOneCardSetCompleted(cards, deleteCardInSlot, handleCompletedCardSetCount);
-  // };
+      setIsAddCard(false);
+    }
+  }, [isAddCard]);
 
   const deleteCardInSlot = (index) => {
     const deleteItemCount = index;
-    [...Array(deleteItemCount)].forEach(() => deleteDragItemInSlots());
+    [...Array(deleteItemCount)].forEach(() => deleteDragItemInSlots(index));
   };
 
   const handleTopOrderCount = () => {

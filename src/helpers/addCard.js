@@ -1,8 +1,6 @@
-export const addCardInSlot = (selectedCardSet, cards) => {
+export const addCardInSlot = (selectedCardSet, cards, setIsAddCard) => {
   selectedCardSet?.forEach((card) => {
     cards.push(card);
-    return true;
+    setIsAddCard(true);
   });
-
-  // isOneCardSetCompleted(cards, deleteCardInSlot, handleCompletedCardSetCount);
 };

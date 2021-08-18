@@ -1,4 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { closedAllCard } from "../helpers/cartControls";
+import {
+  deleteDragItemInSlots,
+  drawCardsToSlots,
+  DrawGiveNewCard,
+  openLastCardInSlot,
+} from "../helpers/SlotControls";
 import Slot from "./Slot";
 
 const INITIAL_SLOTS_CARD_COUNT = 54;
@@ -15,79 +22,28 @@ const CardSlots = ({
   const [slots, setSlots] = useState([[], [], [], [], [], [], [], [], [], []]);
 
   useEffect(() => {
-    const drawCardSet = drawCards(INITIAL_SLOTS_CARD_COUNT);
-
-    const initialSlots = [
-      firstFourSlotHasSixCard(drawCardSet),
-      firstFourSlotHasSixCard(drawCardSet),
-      firstFourSlotHasSixCard(drawCardSet),
-      firstFourSlotHasSixCard(drawCardSet),
-      lastSixSlotsHasFiveCard(drawCardSet),
-      lastSixSlotsHasFiveCard(drawCardSet),
-      lastSixSlotsHasFiveCard(drawCardSet),
-      lastSixSlotsHasFiveCard(drawCardSet),
-      lastSixSlotsHasFiveCard(drawCardSet),
-      lastSixSlotsHasFiveCard(drawCardSet),
-    ];
-
-    initialSlots.map((slots) => closedAllCard(slots));
-    initialSlots.map((slots) => openLastCardInSlot(slots));
-    setSlots(initialSlots);
+    drawCardsToSlots(INITIAL_SLOTS_CARD_COUNT, setSlots, drawCards);
   }, [restart]);
 
   useEffect(() => {
     if (giveNewCard) {
-      DrawGiveNewCard();
+      DrawGiveNewCard(
+        NEW_CARD_COUNT_WHEN_CARDDEALER_ONCLICK,
+        drawCards,
+        setSlots,
+        slots
+      );
       doneGiveNewCard();
     }
   }, [giveNewCard]);
-
-  const DrawGiveNewCard = () => {
-    const drawCardSet = drawCards(NEW_CARD_COUNT_WHEN_CARDDEALER_ONCLICK);
-
-    setSlots(
-      slots.map((cards, index) => [
-        ...cards,
-        { ...drawCardSet[index], isOpen: true },
-      ])
-    );
-  };
-
-  const firstFourSlotHasSixCard = (drawCardSet) => {
-    return drawCardSet.splice(0, 6);
-  };
-
-  const lastSixSlotsHasFiveCard = (drawCardSet) => {
-    return drawCardSet.splice(0, 5);
-  };
-
-  const openLastCardInSlot = (cards) => {
-    if (cards.length > 0) {
-      cards[cards.length - 1].isOpen = true;
-    }
-    return cards;
-  };
-
-  const closedAllCard = (cards) => {
-    cards.map((card) => {
-      card.isOpen = false;
-    });
-    return cards;
-  };
-
-  const deleteDragItemInSlots = (index) => {
-    const newSlots = [...slots];
-    newSlots[index].pop();
-    openLastCardInSlot(newSlots[index]);
-    setSlots(newSlots);
-  };
 
   return (
     <div className="card-slots">
       {slots.map((cardsInSlot, index) => (
         <Slot
-          deleteDragItemInSlots={() => deleteDragItemInSlots(index)}
-          // deleteDragItemInSlots={() => deleteDragItemInSlots(index)}
+          deleteDragItemInSlots={() =>
+            deleteDragItemInSlots(index, slots, setSlots)
+          }
           key={index}
           cards={cardsInSlot}
           handleCompletedCardSetCount={handleCompletedCardSetCount}

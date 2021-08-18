@@ -21,7 +21,7 @@ const CompletedCards = ({ completedCardSetCount }) => {
       const index = completedCardSetCount - 1;
       const copyCompleteSlot = copyCompletedSlots[index];
 
-      copyCompleteSlot.push("SpadesA");
+      copyCompleteSlot.push(true);
 
       setCompletedSlots(copyCompletedSlots);
     }

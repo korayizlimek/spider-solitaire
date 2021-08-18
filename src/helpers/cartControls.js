@@ -23,3 +23,10 @@ export const canSelectedCardSet = (index, cards) => {
     return selectedCardSet;
   }
 };
+
+export const closedAllCard = (cards) => {
+  cards.map((card) => {
+    card.isOpen = false;
+  });
+  return cards;
+};
