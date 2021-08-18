@@ -1,0 +1,11 @@
+@mixin flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin card-style {
+  width: 7vw;
+  height: 9.8vw;
+  border-radius: 7px;
+}

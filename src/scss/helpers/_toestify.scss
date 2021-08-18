@@ -1,17 +1,7 @@
 .Toastify__toast {
-  color: blue;
-  font-size: 1vw;
-  height: 7vw;
-}
-
-.Toastify__toast-container {
-  color: blue;
-  width: 300x;
-}
-
-.Toastify__progress-bar {
-  color: pink;
-}
-
-.Toastify__toast-container--top-right {
+  color: $text-color !important;
+  background-color: $primary-color !important;
+  font-size: 1vw !important;
+  height: 7vw !important;
+  border-radius: 8px !important;
 }

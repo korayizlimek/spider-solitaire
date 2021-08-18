@@ -1,14 +1,9 @@
 import React, { useEffect } from "react";
 import Card from "./Card";
-import { useDrop } from "react-dnd";
-import { cardRules, isRulesCorrectCardSet } from "../helpers/cardRules";
-import { canDropRules } from "../helpers/dropRules";
 import {
   canSelectedCardSet,
   isOneCardSetCompleted,
 } from "../helpers/cartControls";
-// import { addCardInSlot } from "../helpers/addCard";
-import { deleteCardInSlot } from "../helpers/SlotControls";
 import { DndDrop } from "../helpers/DndControls";
 import { useState } from "react";
 

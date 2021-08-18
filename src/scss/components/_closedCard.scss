@@ -1,13 +1,10 @@
 .closed-card {
-  width: 93px;
-  height: 123px;
   display: flex;
+  @include card-style;
 }
 
 .cards {
-  width: 7vw;
-  height: 9.8vw;
+  @include card-style;
   position: absolute;
   border: solid 1px black;
-  border-radius: 7px;
 }

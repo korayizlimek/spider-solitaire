@@ -1,13 +1,10 @@
 header {
-  display: flex;
-  background-color: #464660;
-  justify-content: center;
-  align-items: center;
+  @include flex;
+  background-color: $primary-color;
   justify-content: space-around;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 2vw;
   padding: 10px;
-  color: #b4b897;
+  color: $text-color;
 
   img {
     height: 3vw;
@@ -17,12 +14,10 @@ header {
   button {
     background-color: transparent;
     border: none;
-    color: #b4b897;
+    color: $text-color;
   }
 }
 
 .header-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex;
 }

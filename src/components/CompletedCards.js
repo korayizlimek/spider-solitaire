@@ -16,7 +16,10 @@ const CompletedCards = ({ completedCardSetCount }) => {
   ]);
 
   useEffect(() => {
-    if (completedCardSetCount > 0 && completedCardSetCount <= 8) {
+    if (
+      completedCardSetCount > 0 &&
+      completedCardSetCount <= COMPLETED_CARD_SLOTS
+    ) {
       const copyCompletedSlots = [...compeletedSlots];
       const index = completedCardSetCount - 1;
       const copyCompleteSlot = copyCompletedSlots[index];

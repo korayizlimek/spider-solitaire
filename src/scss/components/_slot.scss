@@ -4,10 +4,6 @@
 
 .slot-card {
   position: relative;
-  border: 1px solid red;
-  padding: 0px;
-  width: 7vw;
-  height: 9.8vw;
-  border: solid 1px black;
-  border-radius: 7px;
+  @include card-style;
+  border: 1px dotted black;
 }

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { closedAllCard } from "../helpers/cartControls";
 import {
   deleteDragItemInSlots,
   drawCardsToSlots,
   DrawGiveNewCard,
-  openLastCardInSlot,
 } from "../helpers/SlotControls";
 import Slot from "./Slot";
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import cup from "../../assets/svg/icons/trophy.svg";
 
 const Leadership = ({ score }) => {
@@ -16,7 +16,9 @@ const Leadership = ({ score }) => {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    staticLeaderships.push({ order: 3, name: name, score: score });
+    const newStaticLeadership = [...staticLeaderships];
+    newStaticLeadership.push({ order: 3, name: name, score: score });
+    setStaticLeaderships(newStaticLeadership);
     setFormDisplay("none");
   };
 
