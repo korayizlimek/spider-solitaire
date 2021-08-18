@@ -87,6 +87,7 @@ const CardSlots = ({
       {slots.map((cardsInSlot, index) => (
         <Slot
           deleteDragItemInSlots={() => deleteDragItemInSlots(index)}
+          // deleteDragItemInSlots={() => deleteDragItemInSlots(index)}
           key={index}
           cards={cardsInSlot}
           handleCompletedCardSetCount={handleCompletedCardSetCount}

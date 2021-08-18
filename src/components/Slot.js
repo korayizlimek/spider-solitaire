@@ -1,6 +1,14 @@
 import React from "react";
 import Card from "./Card";
 import { useDrop } from "react-dnd";
+import { cardRules, isRulesCorrectCardSet } from "../helpers/cardRules";
+import { canDropRules } from "../helpers/dropRules";
+import { deleteCardInSlot } from "../helpers/deleteCard";
+import {
+  canSelectedCardSet,
+  isOneCardSetCompleted,
+} from "../helpers/cartControls";
+import { addCardInSlot } from "../helpers/addCard";
 
 const Slot = ({
   cards,
@@ -9,94 +17,25 @@ const Slot = ({
   handleCompletedCardSetCount,
   addScore,
 }) => {
-  const [{ isOver }, dropRef] = useDrop({
+  const [{ isOver, canDrop, didDrob }, dropRef] = useDrop({
     accept: "card",
-    drop: (item) => addCardInSlot(item.selectedCardSet),
-    canDrop: (item) => canDropRules(item.card),
+    drop: (item) => addCardInSlot(item.selectedCardSet, cards),
+    canDrop: (item) => canDropRules(item.card, cards),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
       canDrop: !!monitor.canDrop(),
+      didDrob: !!monitor.didDrop(),
     }),
   });
 
-  const canDropRules = (dragCard) => {
-    const dragCardValue = dragCard.value;
-    const cardsInSlot = cards;
+  // const addCardInSlot = (selectedCardSet) => {
+  //   selectedCardSet?.forEach((card) => {
+  //     cards.push(card);
+  //   });
 
-    const isThereCardsInSlot = cardsInSlot.length;
-    if (isThereCardsInSlot > 0) {
-      const lastCardInSlot = cardsInSlot[cards.length - 1];
-      const lastCardInSlotValue = lastCardInSlot.value;
-
-      const isRulesCorrect = cardRules(lastCardInSlotValue, dragCardValue);
-      return isRulesCorrect;
-    } else {
-      return true;
-    }
-  };
-
-  const cardRules = (element, childElement) => {
-    const elementPlusOne = element + 1;
-
-    const isRulesCorrect = false;
-    if (elementPlusOne === childElement) {
-      const isRulesCorrect = true;
-      return isRulesCorrect;
-    } else {
-      return isRulesCorrect;
-    }
-  };
-
-  const canSelectedCardSet = (index) => {
-    const selectedCardSet = cards.slice(index, cards.length);
-    const isRulesCorrect = isRulesCorrectCardSet(selectedCardSet);
-    if (isRulesCorrect) {
-      return selectedCardSet;
-    }
-  };
-
-  const isRulesCorrectCardSet = (selectedCardSet) => {
-    if (selectedCardSet.length === 1) {
-      const canBeDrag = true;
-      return canBeDrag;
-    } else {
-      for (let i = 0; i < selectedCardSet.length - 1; i++) {
-        const element = selectedCardSet[i];
-        const elementValue = element.value;
-
-        const childElement = selectedCardSet[i + 1];
-        const childElementValue = childElement.value;
-
-        const isRulesCorrect = cardRules(elementValue, childElementValue);
-        if (isRulesCorrect === false) {
-          const canBeDrag = false;
-          return canBeDrag;
-        }
-      }
-      const canBeDrag = true;
-      return canBeDrag;
-    }
-  };
-
-  const addCardInSlot = (selectedCardSet) => {
-    selectedCardSet?.forEach((card) => {
-      cards.push(card);
-    });
-
-    isOneCardSetCompleted();
-  };
-
-  const isOneCardSetCompleted = () => {
-    const oneCardSet = 13;
-    if (cards.length >= oneCardSet) {
-      const last13CardInSlot = cards.slice(oneCardSet * -1);
-      const isRulesCorrect = isRulesCorrectCardSet(last13CardInSlot);
-      if (isRulesCorrect) {
-        deleteCardInSlot(oneCardSet);
-        handleCompletedCardSetCount();
-      }
-    }
-  };
+  //!
+  //   isOneCardSetCompleted(cards, deleteCardInSlot, handleCompletedCardSetCount);
+  // };
 
   const deleteCardInSlot = (index) => {
     const deleteItemCount = index;
@@ -121,7 +60,7 @@ const Slot = ({
         {cards?.map((card, index) => (
           <Card
             deleteCardInSlot={deleteCardInSlot}
-            canSelectedCardSet={() => canSelectedCardSet(index)}
+            canSelectedCardSet={() => canSelectedCardSet(index, cards)}
             key={card.id}
             card={card}
             order={index}
