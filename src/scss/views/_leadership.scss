@@ -1,5 +1,4 @@
 .leadership {
-  border: 1px solid black;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -7,10 +6,10 @@
   min-width: 50px;
   max-width: 600px;
   margin: auto;
-  color: #b4b897;
+  color: $text-color;
 
   p {
-    color: #368b85;
+    color: $primary-color;
     font-size: 6vw;
   }
 
@@ -18,8 +17,8 @@
     border: none;
     padding: 1vw;
     border-radius: 10px;
-    background-color: #464660;
-    color: #b4b897;
+    background-color: $primary-color;
+    color: $text-color;
   }
 }
 
@@ -31,11 +30,13 @@
 
   img {
     height: 5vw;
+    max-height: 90px;
+    min-height: 50px;
   }
 }
 
 .leader-active {
-  background-color: #368b85;
+  background-color: $primary-color;
   border-radius: 50px;
 }
 
@@ -114,9 +115,6 @@ $box-shadow2: ();
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background: #000;
   overflow: hidden;
 }
 
