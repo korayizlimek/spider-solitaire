@@ -3,7 +3,8 @@ import {
   deleteDragItemInSlots,
   drawCardsToSlots,
   DrawGiveNewCard,
-} from "../helpers/SlotControls";
+} from "../helpers/slot/SlotControls";
+
 import Slot from "./Slot";
 
 const INITIAL_SLOTS_CARD_COUNT = 54;

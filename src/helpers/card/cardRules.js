@@ -11,10 +11,8 @@ export const cardRules = (element, childElement) => {
 };
 
 export const isRulesCorrectCardSet = (selectedCardSet) => {
-  if (selectedCardSet.length === 1) {
-    const canBeDrag = true;
-    return canBeDrag;
-  } else {
+  let canBeDrag = true;
+  if (selectedCardSet.length > 1) {
     for (let i = 0; i < selectedCardSet.length - 1; i++) {
       const element = selectedCardSet[i];
       const elementValue = element.value;
@@ -24,11 +22,12 @@ export const isRulesCorrectCardSet = (selectedCardSet) => {
 
       const isRulesCorrect = cardRules(elementValue, childElementValue);
       if (isRulesCorrect === false) {
-        const canBeDrag = false;
+        canBeDrag = false;
         return canBeDrag;
       }
     }
-    const canBeDrag = true;
+    canBeDrag = true;
     return canBeDrag;
   }
+  return canBeDrag;
 };

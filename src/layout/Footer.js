@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer>@Copyright Trendyol Bootcamp Student - Recai Koray Izlimek</footer>
+    <footer>Author: Trendyol Bootcamp Student - Recai Koray Izlimek</footer>
   );
 };
 

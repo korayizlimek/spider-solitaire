@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
+
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
+import Main from "./layout/Main";
 
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import Section from "./views/Section/Section";
 
 const INITIAL_GAME_SCORE = 1000;
 
@@ -37,7 +38,7 @@ function App() {
           score={score}
           gameOver={gameOver}
         />
-        <Section
+        <Main
           restart={restart}
           score={score}
           addScore={addScore}

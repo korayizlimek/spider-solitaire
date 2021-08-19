@@ -3,8 +3,8 @@ import CardSlots from "../../components/CardSlots";
 import CardDealer from "../../components/CardDealer";
 import CompletedCards from "../../components/CompletedCards";
 
-import { shuffle } from "../../helpers/shuffle";
-import { getInitialDeck } from "../../helpers/getInitialDeck";
+import { shuffle } from "../../helpers/deck/shuffle";
+import { getInitialDeck } from "../../helpers/deck/getInitialDeck";
 
 const unShuffledDeck = getInitialDeck;
 
@@ -51,7 +51,7 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
   return (
     <div className="game-table">
       <div className="game-table-top">
-        {/* <button onClick={() => handleCompletedCardSetCount()}>HACK</button> */}
+        <button onClick={() => handleCompletedCardSetCount()}>HACK</button>
         <div className="game-table-top-card-dealer">
           <CardDealer
             giveNewCardWhenCardDealerOnClick={giveNewCardWhenCardDealerOnClick}

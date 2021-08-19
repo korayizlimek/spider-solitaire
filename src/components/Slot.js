@@ -3,13 +3,12 @@ import Card from "./Card";
 import {
   canSelectedCardSet,
   isOneCardSetCompleted,
-} from "../helpers/cartControls";
-import { DndDrop } from "../helpers/DndControls";
+} from "../helpers/card/cartControls";
+import { DndDrop } from "../helpers/dnd/DndControls";
 import { useState } from "react";
 
 const Slot = ({
   cards,
-  selectedCardId,
   deleteDragItemInSlots,
   handleCompletedCardSetCount,
   addScore,
@@ -56,7 +55,6 @@ const Slot = ({
             key={card.id}
             card={card}
             order={index}
-            selectedCardId={selectedCardId}
             topOrderCount={handleTopOrderCount()}
             addScore={addScore}
           />

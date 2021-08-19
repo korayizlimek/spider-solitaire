@@ -1,6 +1,8 @@
 import React from "react";
-import { DndDrag } from "../helpers/DndControls";
+import { DndDrag } from "../helpers/dnd/DndControls";
 import CardImage from "./CardImage";
+
+const ONE_CARD_HEIGHT_VW = 7;
 
 const Card = ({
   card,
@@ -20,16 +22,20 @@ const Card = ({
     addScore
   );
 
-  const oppacity = isDragging ? 0.5 : 1;
+  const oppacity = isDragging ? 0.7 : 1;
+  const SelectedCardSetMinusSelectCardLength = selectedCardSet?.length - 1;
 
   return (
     <div
       ref={dragRef}
-      className={`card ${card.id === selectedCardId ? " selected" : ""}`}
+      className={`card ${isDragging && "selected"}`}
       style={{
         opacity: oppacity,
-        zIndex: order,
         top: `${order * topOrderCount}vw`,
+        height: `${
+          ONE_CARD_HEIGHT_VW +
+          SelectedCardSetMinusSelectCardLength * topOrderCount
+        }vw`,
       }}
     >
       <CardImage card={card} />

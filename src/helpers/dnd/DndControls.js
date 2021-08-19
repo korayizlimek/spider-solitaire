@@ -1,6 +1,6 @@
 import { useDrag, useDrop } from "react-dnd";
-import { addCardInSlot } from "./addCard";
-import { deleteCard } from "./deleteCard";
+import { addCardInSlot } from "../slot/addCard";
+import { deleteCard } from "../slot/deleteCard";
 import { canDropRules } from "./dropRules";
 
 export const DndDrop = (cards, setIsAddCard) => {

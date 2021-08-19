@@ -1,4 +1,4 @@
-import { closedAllCard } from "./cartControls";
+import { closedAllCard } from "../card/cartControls";
 
 export const openLastCardInSlot = (cards) => {
   if (cards.length > 0) {
