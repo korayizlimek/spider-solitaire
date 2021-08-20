@@ -9,13 +9,16 @@ import { drawCards } from "../../helpers/deck/drawCard";
 const unShuffledDeck = getInitialDeck;
 
 const COMPLETE_CARD_COUNT_FOR_GAME_OVER = 8;
+const INITIAL_COMPLETE_SLOTS = 0;
 
 const CardTable = ({ restart, addScore, runGameOver }) => {
   const shuffedDeck = () => shuffle(unShuffledDeck);
 
   const [gameDeck, setGameDeck] = useState(shuffedDeck);
   const [giveNewCard, setGiveNewCard] = useState(false);
-  const [completedCardSetCount, setCompletedCardSetCount] = useState(0);
+  const [completedCardSetCount, setCompletedCardSetCount] = useState(
+    INITIAL_COMPLETE_SLOTS
+  );
 
   useEffect(() => {
     if (completedCardSetCount === COMPLETE_CARD_COUNT_FOR_GAME_OVER) {
@@ -25,6 +28,7 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
 
   useEffect(() => {
     setGameDeck(shuffedDeck);
+    setCompletedCardSetCount(INITIAL_COMPLETE_SLOTS);
   }, [restart]);
 
   // useEffect(()=> {
@@ -69,7 +73,10 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
           />
         </div>
         <div className="game-table-top-completed-cards">
-          <CompletedCards completedCardSetCount={completedCardSetCount} />
+          <CompletedCards
+            completedCardSetCount={completedCardSetCount}
+            restart={restart}
+          />
         </div>
       </div>
       <div className="game-table-bottom">

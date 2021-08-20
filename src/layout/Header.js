@@ -35,13 +35,14 @@ const Header = ({ restart, pressRestart, score, gameOver }) => {
       setSeconds((prevState) => prevState + 1);
     }, 1000));
 
+  const time = (time) => (time > 10 ? time : `0${time}`);
+
   return (
     <header className="header">
       <div className="header-section time-section">
-        <button onClick={() => stopCounter()}>onclick</button>
         <img src={sandClockIcon} alt="sandClock icon" />
         <p>
-          {minutes}:{seconds}
+          {time(minutes)}:{time(seconds)}
         </p>
       </div>
       <div className="header-section score-section">
