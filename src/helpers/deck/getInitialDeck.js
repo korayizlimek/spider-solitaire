@@ -20,7 +20,6 @@ const CountOfCard54 = [
   ...PlayingCardNames,
   ...PlayingCardNames,
 ];
-
 const DeckOfCards = CountOfCard54;
 
 const SolitairePlayWithTwoDeckOfCards = [...DeckOfCards, ...DeckOfCards];

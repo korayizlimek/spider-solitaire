@@ -5,7 +5,7 @@ import CompletedCards from "../../components/CompletedCards";
 
 import { shuffle } from "../../helpers/deck/shuffle";
 import { getInitialDeck } from "../../helpers/deck/getInitialDeck";
-
+import { drawCards } from "../../helpers/deck/drawCard";
 const unShuffledDeck = getInitialDeck;
 
 const COMPLETE_CARD_COUNT_FOR_GAME_OVER = 8;
@@ -26,6 +26,16 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
   useEffect(() => {
     setGameDeck(shuffedDeck);
   }, [restart]);
+
+  // useEffect(()=> {
+
+  // },[drawn])
+
+  // const handleDrawCards = (n) => {
+  //   const { drawnCards, retainedCardsWhenDrawnCards } = drawCard(gameDeck, n);
+  //   setGameDeck(retainedCardsWhenDrawnCards);
+  //   return drawnCards;
+  // };
 
   const drawCards = (n) => {
     const drawnCards = gameDeck.slice(0, n);

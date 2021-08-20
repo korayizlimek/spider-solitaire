@@ -1,6 +1,5 @@
-export const addCardInSlot = (selectedCardSet, cards, setIsAddCard) => {
+export const addCardInSlot = (selectedCardSet, cards) => {
   selectedCardSet?.forEach((card) => {
     cards.push(card);
-    setIsAddCard(true);
   });
 };
