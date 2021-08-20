@@ -31,19 +31,8 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
     setCompletedCardSetCount(INITIAL_COMPLETE_SLOTS);
   }, [restart]);
 
-  // useEffect(()=> {
-
-  // },[drawn])
-
-  // const handleDrawCards = (n) => {
-  //   const { drawnCards, retainedCardsWhenDrawnCards } = drawCard(gameDeck, n);
-  //   setGameDeck(retainedCardsWhenDrawnCards);
-  //   return drawnCards;
-  // };
-
-  const drawCards = (n) => {
-    const drawnCards = gameDeck.slice(0, n);
-    const retainedCardsWhenDrawnCards = gameDeck.slice(n);
+  const handleDrawCards = (n) => {
+    const [drawnCards, retainedCardsWhenDrawnCards] = drawCards(gameDeck, n);
     setGameDeck(retainedCardsWhenDrawnCards);
     return drawnCards;
   };
@@ -82,7 +71,7 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
       <div className="game-table-bottom">
         <CardSlots
           restart={restart}
-          drawCards={drawCards}
+          drawCards={handleDrawCards}
           giveNewCard={giveNewCard}
           doneGiveNewCard={doneGiveNewCard}
           handleCompletedCardSetCount={handleCompletedCardSetCount}

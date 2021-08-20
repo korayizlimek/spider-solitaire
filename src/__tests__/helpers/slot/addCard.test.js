@@ -30,7 +30,7 @@ describe("addCardInSlot", () => {
 
   test("should push card when selectedCardSet is drop in slot", () => {
     addCardInSlot(selectedCardSet, cardsInSlot);
-    console.log(cardsInSlot);
+    // console.log(cardsInSlot);
 
     expect(cardsInSlot.length).toBe(3);
   });

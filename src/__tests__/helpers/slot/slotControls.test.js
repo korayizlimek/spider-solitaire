@@ -42,7 +42,7 @@ describe("openLastCardInSlot", () => {
     const cardsInSlot = [];
 
     openLastCardInSlot(cardsInSlot);
-    console.log(cardsInSlot);
+    // console.log(cardsInSlot);
     expect(cardsInSlot.length).toBe(0);
   });
 });
