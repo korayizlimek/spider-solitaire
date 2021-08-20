@@ -1,5 +1,5 @@
-export const drawCards = (gameDeck, n) => {
-  const drawnCards = gameDeck.slice(0, n);
-  const retainedCardsWhenDrawnCards = gameDeck.slice(n);
+export const drawCards = (gameDeck, index) => {
+  const drawnCards = gameDeck.slice(0, index);
+  const retainedCardsWhenDrawnCards = gameDeck.slice(index);
   return [drawnCards, retainedCardsWhenDrawnCards];
 };
