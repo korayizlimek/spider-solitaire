@@ -6,7 +6,7 @@ import { canDropRules } from "./dropRules";
 export const DndDrop = (cards, setIsAddCard) => {
   const [{ isOver, canDrop, drop }, dropRef] = useDrop({
     accept: "card",
-    drop: (item) => addCardInSlot(item.selectedCardSet, cards, setIsAddCard),
+    drop: (item) => dropFunction(item.selectedCardSet, cards, setIsAddCard),
     canDrop: (item) => canDropRules(item.card, cards),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
@@ -15,6 +15,11 @@ export const DndDrop = (cards, setIsAddCard) => {
     }),
   });
   return { dropRef };
+};
+
+export const dropFunction = (selectedCardSet, cards, setIsAddCard) => {
+  addCardInSlot(selectedCardSet, cards, setIsAddCard);
+  setIsAddCard(true);
 };
 
 export const DndDrag = (card, selectedCardSet, deleteCardInSlot, addScore) => {

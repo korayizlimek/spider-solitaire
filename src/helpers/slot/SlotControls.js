@@ -1,4 +1,4 @@
-import { closedAllCard } from "../card/cartControls";
+import { closedAllCard } from "../card/cardControls";
 
 export const openLastCardInSlot = (cards) => {
   if (cards.length > 0) {
@@ -7,20 +7,15 @@ export const openLastCardInSlot = (cards) => {
   return cards;
 };
 
-export const deleteDragItemInSlots = (index, slots, setSlots) => {
+export const deleteDragItemInSlots = (index, slots) => {
   const newSlots = [...slots];
   newSlots[index].pop();
   openLastCardInSlot(newSlots[index]);
-  setSlots(newSlots);
+  return newSlots;
 };
 
-export const drawCardsToSlots = (
-  INITIAL_SLOTS_CARD_COUNT,
-  setSlots,
-  drawCards
-) => {
+export const drawCardsToSlots = (INITIAL_SLOTS_CARD_COUNT, drawCards) => {
   const drawCardSet = drawCards(INITIAL_SLOTS_CARD_COUNT);
-
   const initialSlots = [
     firstFourSlotHasSixCard(drawCardSet),
     firstFourSlotHasSixCard(drawCardSet),
@@ -36,7 +31,7 @@ export const drawCardsToSlots = (
 
   initialSlots.map((slots) => closedAllCard(slots));
   initialSlots.map((slots) => openLastCardInSlot(slots));
-  setSlots(initialSlots);
+  return initialSlots;
 };
 
 export const firstFourSlotHasSixCard = (drawCardSet) => {
@@ -50,15 +45,13 @@ export const lastSixSlotsHasFiveCard = (drawCardSet) => {
 export const DrawGiveNewCard = (
   NEW_CARD_COUNT_WHEN_CARDDEALER_ONCLICK,
   drawCards,
-  setSlots,
   slots
 ) => {
   const drawCardSet = drawCards(NEW_CARD_COUNT_WHEN_CARDDEALER_ONCLICK);
 
-  setSlots(
-    slots.map((cards, index) => [
-      ...cards,
-      { ...drawCardSet[index], isOpen: true },
-    ])
-  );
+  const newSlots = slots.map((cards, index) => [
+    ...cards,
+    { ...drawCardSet[index], isOpen: true },
+  ]);
+  return newSlots;
 };
