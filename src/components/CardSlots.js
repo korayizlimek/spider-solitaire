@@ -21,28 +21,32 @@ const CardSlots = ({
   const [slots, setSlots] = useState([[], [], [], [], [], [], [], [], [], []]);
 
   useEffect(() => {
-    drawCardsToSlots(INITIAL_SLOTS_CARD_COUNT, setSlots, drawCards);
+    const newSlots = drawCardsToSlots(INITIAL_SLOTS_CARD_COUNT, drawCards);
+    setSlots(newSlots);
   }, [restart]);
 
   useEffect(() => {
     if (giveNewCard) {
-      DrawGiveNewCard(
+      const newSlots = DrawGiveNewCard(
         NEW_CARD_COUNT_WHEN_CARDDEALER_ONCLICK,
         drawCards,
-        setSlots,
         slots
       );
+      setSlots(newSlots);
       doneGiveNewCard();
     }
   }, [giveNewCard]);
+
+  const handleDeleteDragItemInSlots = (index) => {
+    const newSlots = deleteDragItemInSlots(index, slots);
+    setSlots(newSlots);
+  };
 
   return (
     <div className="card-slots">
       {slots.map((cardsInSlot, index) => (
         <Slot
-          deleteDragItemInSlots={() =>
-            deleteDragItemInSlots(index, slots, setSlots)
-          }
+          deleteDragItemInSlots={() => handleDeleteDragItemInSlots(index)}
           key={index}
           cards={cardsInSlot}
           handleCompletedCardSetCount={handleCompletedCardSetCount}

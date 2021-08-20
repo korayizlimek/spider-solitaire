@@ -3,7 +3,7 @@ import Card from "./Card";
 import {
   canSelectedCardSet,
   isOneCardSetCompleted,
-} from "../helpers/card/cartControls";
+} from "../helpers/card/cardControls";
 import { DndDrop } from "../helpers/dnd/DndControls";
 import { useState } from "react";
 
