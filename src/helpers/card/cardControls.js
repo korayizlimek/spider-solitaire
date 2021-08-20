@@ -17,10 +17,17 @@ export const isOneCardSetCompleted = (
 };
 
 export const canSelectedCardSet = (index, cards) => {
-  const selectedCardSet = cards.slice(index, cards.length);
-  const isRulesCorrect = isRulesCorrectCardSet(selectedCardSet);
-  if (isRulesCorrect) {
-    return selectedCardSet;
+  try {
+    if (index > cards.length) {
+      throw new Error("index is out of range");
+    }
+    const selectedCardSet = cards.slice(index, cards.length);
+    const isRulesCorrect = isRulesCorrectCardSet(selectedCardSet);
+    if (isRulesCorrect) {
+      return selectedCardSet;
+    }
+  } catch (error) {
+    return error.message;
   }
 };
 
