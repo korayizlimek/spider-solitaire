@@ -47,9 +47,19 @@ const CardImage = ({ card }) => {
   return (
     <div>
       {isOpen ? (
-        <img className="card-img" src={cardImage} alt={cardImage} />
+        <img
+          data-testid="cardImage"
+          className="card-img"
+          src={cardImage}
+          alt={cardImage}
+        />
       ) : (
-        <img className="card-img" src={cardBeck} alt={cardBeck} />
+        <img
+          data-testid="cardBack"
+          className="card-img"
+          src={cardBeck}
+          alt={cardBeck}
+        />
       )}
     </div>
   );

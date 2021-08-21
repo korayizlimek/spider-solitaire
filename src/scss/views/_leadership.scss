@@ -20,6 +20,13 @@
     background-color: $primary-color;
     color: $text-color;
   }
+  button {
+    border: none;
+    padding: 1vw;
+    border-radius: 10px;
+    background-color: $primary-color;
+    color: $text-color;
+  }
 }
 
 .leader {
@@ -40,7 +47,7 @@
   border-radius: 50px;
 }
 
-// the bode block below is a copy
+// the code block below is a copy
 
 $particles: 50;
 $width: 500;

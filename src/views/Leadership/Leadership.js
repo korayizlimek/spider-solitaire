@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-// import Cup from "../../assets/svg/icons/trophy.svg";
+import Cup from "../../assets/svg/icons/trophy.svg";
 
 const Leadership = ({ score }) => {
   const [name, setName] = useState();
-  const [formDisplay, setFormDisplay] = useState(true);
+  const [formDisplay, setFormDisplay] = useState("inline");
 
   const [staticLeaderships, setStaticLeaderships] = useState([
     { order: 1, name: "recai", score: 9990 },
@@ -31,17 +31,13 @@ const Leadership = ({ score }) => {
   return (
     <div className="leadership">
       {/* firework */}
-      <div class="pyro">
-        <div class="before"></div>
-        <div class="after"></div>
+      <div className="pyro">
+        <div className="before"></div>
+        <div className="after"></div>
       </div>
       {/* finish firework */}
       <h2 data-testid="title">You Win</h2>
-      <form
-        action=""
-        onSubmit={(e) => formSubmit(e)}
-        style={{ display: formDisplay }}
-      >
+      <form data-testid="form" action="" style={{ display: formDisplay }}>
         <input
           data-testid="input"
           type="text"
@@ -49,11 +45,14 @@ const Leadership = ({ score }) => {
           onChange={(e) => handleName(e)}
           placeholder="Enter yourname"
         />
+        <button data-testid="button" onClick={(e) => formSubmit(e)}>
+          Enter
+        </button>
       </form>
 
       {staticLeaderships.map((leader) => (
         <div className={`leader  ${ClassNameLeader(leader.name)}`}>
-          {/* <img src={Cup} alt="leadercup" /> */}
+          <img src={Cup} alt="leadercup" />
           <div>{leader.order}</div>
           <div>{leader.name}</div>
           <div>{leader.score}</div>
