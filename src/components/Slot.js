@@ -7,6 +7,8 @@ import {
 import { DndDrop } from "../helpers/dnd/DndControls";
 import { useState } from "react";
 
+const ONE_CARD_SET_FOR_COMPLETE = 13;
+
 const Slot = ({
   cards,
   deleteDragItemInSlots,
@@ -18,12 +20,12 @@ const Slot = ({
 
   useEffect(() => {
     if (isAddCard === true) {
-      isOneCardSetCompleted(
-        cards,
-        deleteCardInSlot,
-        handleCompletedCardSetCount
-      );
-
+      const isCompleted = isOneCardSetCompleted(cards);
+      console.log(isCompleted, "compplete");
+      if (isCompleted) {
+        deleteCardInSlot(ONE_CARD_SET_FOR_COMPLETE);
+        handleCompletedCardSetCount();
+      }
       setIsAddCard(false);
     }
   }, [isAddCard]);

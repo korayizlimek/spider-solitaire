@@ -1,19 +1,22 @@
 import { isRulesCorrectCardSet } from "./cardRules";
 
-export const isOneCardSetCompleted = (
-  cards,
-  deleteCardInSlot,
-  handleCompletedCardSetCount
-) => {
-  const oneCardSet = 13;
-  if (cards.length >= oneCardSet) {
-    const last13CardInSlot = cards.slice(oneCardSet * -1);
+const ONE_CARD_SET_FOR_COMPLETE = 13;
+
+export const isOneCardSetCompleted = (cards) => {
+  console.log("girdi");
+  let last13CardInSlotHasCorrectRules = false;
+  if (cards.length >= ONE_CARD_SET_FOR_COMPLETE) {
+    const last13CardInSlot = cards.slice(ONE_CARD_SET_FOR_COMPLETE * -1);
+
     const isRulesCorrect = isRulesCorrectCardSet(last13CardInSlot);
     if (isRulesCorrect) {
-      deleteCardInSlot(oneCardSet);
-      handleCompletedCardSetCount();
+      last13CardInSlotHasCorrectRules = true;
+      console.log("cikti");
+      return last13CardInSlotHasCorrectRules;
     }
   }
+  console.log("cikti");
+  return last13CardInSlotHasCorrectRules;
 };
 
 export const canSelectedCardSet = (index, cards) => {
