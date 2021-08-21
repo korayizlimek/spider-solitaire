@@ -1,5 +1,7 @@
+import { drawCards } from "../../../helpers/deck/drawCard";
 import {
   deleteDragItemInSlots,
+  DrawGiveNewCard,
   firstFourSlotHasSixCard,
   lastSixSlotsHasFiveCard,
   openLastCardInSlot,
@@ -90,17 +92,6 @@ describe("deleteDragItemInSlots", () => {
   });
 });
 
-// describe("drawCardsToSlots", () => {
-//   test("", () => {
-//     const INITIAL_SLOTS_CARD_COUNT = 54;
-//     const drawCards = getInitialDeck;
-
-// const result = drawCardsToSlots(INITIAL_SLOTS_CARD_COUNT, drawCards);
-
-//     expect(result[0].length).toBe(6);
-//   });
-// });
-
 describe("firstFourSlotHasSixCard", () => {
   test("should return six card from drawCardSet to first four Slot", () => {
     const drawCardSet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -129,13 +120,27 @@ describe("lastSixSlotsHasFiveCard", () => {
 //   test("bla bla", () => {
 //     const NEW_CARD_COUNT_WHEN_CARDDEALER_ONCLICK = 10;
 //     const slots = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1]];
+//     const gameDeck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
 //     const result = DrawGiveNewCard(
 //       NEW_CARD_COUNT_WHEN_CARDDEALER_ONCLICK,
-//       drawCards,
+//       drawCards(gameDeck),
 //       slots
 //     );
 
+//     console.log(result);
+
 //     expect(result[0]).toBe([1, 1]);
+//   });
+// });
+
+// describe("drawCardsToSlots", () => {
+//   test("", () => {
+//     const INITIAL_SLOTS_CARD_COUNT = 54;
+//     const drawCards = getInitialDeck;
+
+// const result = drawCardsToSlots(INITIAL_SLOTS_CARD_COUNT, drawCards);
+
+//     expect(result[0].length).toBe(6);
 //   });
 // });

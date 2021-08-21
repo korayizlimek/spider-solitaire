@@ -21,7 +21,6 @@ const Slot = ({
   useEffect(() => {
     if (isAddCard === true) {
       const isCompleted = isOneCardSetCompleted(cards);
-      console.log(isCompleted, "compplete");
       if (isCompleted) {
         deleteCardInSlot(ONE_CARD_SET_FOR_COMPLETE);
         handleCompletedCardSetCount();

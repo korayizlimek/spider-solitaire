@@ -3,7 +3,6 @@ import { isRulesCorrectCardSet } from "./cardRules";
 const ONE_CARD_SET_FOR_COMPLETE = 13;
 
 export const isOneCardSetCompleted = (cards) => {
-  console.log("girdi");
   let last13CardInSlotHasCorrectRules = false;
   if (cards.length >= ONE_CARD_SET_FOR_COMPLETE) {
     const last13CardInSlot = cards.slice(ONE_CARD_SET_FOR_COMPLETE * -1);
@@ -11,11 +10,9 @@ export const isOneCardSetCompleted = (cards) => {
     const isRulesCorrect = isRulesCorrectCardSet(last13CardInSlot);
     if (isRulesCorrect) {
       last13CardInSlotHasCorrectRules = true;
-      console.log("cikti");
       return last13CardInSlotHasCorrectRules;
     }
   }
-  console.log("cikti");
   return last13CardInSlotHasCorrectRules;
 };
 

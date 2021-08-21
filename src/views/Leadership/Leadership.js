@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import cup from "../../assets/svg/icons/trophy.svg";
+// import Cup from "../../assets/svg/icons/trophy.svg";
 
 const Leadership = ({ score }) => {
   const [name, setName] = useState();
@@ -30,17 +30,20 @@ const Leadership = ({ score }) => {
 
   return (
     <div className="leadership">
+      {/* firework */}
       <div class="pyro">
         <div class="before"></div>
         <div class="after"></div>
       </div>
-      <p>You Win</p>
+      {/* finish firework */}
+      <h2 data-testid="title">You Win</h2>
       <form
         action=""
         onSubmit={(e) => formSubmit(e)}
         style={{ display: formDisplay }}
       >
         <input
+          data-testid="input"
           type="text"
           value={name}
           onChange={(e) => handleName(e)}
@@ -50,7 +53,7 @@ const Leadership = ({ score }) => {
 
       {staticLeaderships.map((leader) => (
         <div className={`leader  ${ClassNameLeader(leader.name)}`}>
-          <img src={cup} alt="leadercup" />
+          {/* <img src={Cup} alt="leadercup" /> */}
           <div>{leader.order}</div>
           <div>{leader.name}</div>
           <div>{leader.score}</div>
