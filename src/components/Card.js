@@ -7,7 +7,6 @@ const ONE_CARD_HEIGHT_VW = 7;
 const Card = ({
   card,
   order,
-  selectedCardId,
   deleteCardInSlot,
   canSelectedCardSet,
   topOrderCount,

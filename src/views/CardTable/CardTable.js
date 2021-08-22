@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CardSlots from "../../components/CardSlots";
 import CardDealer from "../../components/CardDealer";
 import CompletedCards from "../../components/CompletedCards";
@@ -26,16 +26,22 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
     }
   }, [completedCardSetCount]);
 
+  const handleDrawCards = (n) => {
+    const [drawnCards, retainedCardsWhenDrawnCards] = drawCards(gameDeck, n); //104
+    setGameDeck(retainedCardsWhenDrawnCards);
+
+    return drawnCards;
+  };
+
+  const firstUpdate = useRef(true);
   useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
     setGameDeck(shuffedDeck);
     setCompletedCardSetCount(INITIAL_COMPLETE_SLOTS);
   }, [restart]);
-
-  const handleDrawCards = (n) => {
-    const [drawnCards, retainedCardsWhenDrawnCards] = drawCards(gameDeck, n);
-    setGameDeck(retainedCardsWhenDrawnCards);
-    return drawnCards;
-  };
 
   const giveNewCardWhenCardDealerOnClick = () => {
     setGiveNewCard(true);
