@@ -1,7 +1,9 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import Leadership from "../../../views/Leadership/Leadership";
 import userEvent from "@testing-library/user-event";
+
+afterEach(cleanup);
 
 describe("<Leadership /> h2", () => {
   test("render without crashing", () => {
