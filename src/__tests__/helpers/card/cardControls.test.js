@@ -74,7 +74,6 @@ describe("isOneCardSetCompleted", () => {
 
     expect(result).toBeFalsy();
   });
-  console.log("yapilacak");
 });
 
 describe("canSelectedCardSet", () => {

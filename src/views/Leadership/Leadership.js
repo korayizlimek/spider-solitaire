@@ -51,7 +51,10 @@ const Leadership = ({ score }) => {
       </form>
 
       {staticLeaderships.map((leader) => (
-        <div className={`leader  ${ClassNameLeader(leader.name)}`}>
+        <div
+          key={leader.order}
+          className={`leader  ${ClassNameLeader(leader.name)}`}
+        >
           <img src={Cup} alt="leadercup" />
           <div>{leader.order}</div>
           <div>{leader.name}</div>
