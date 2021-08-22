@@ -1,4 +1,4 @@
-.game-table {
+.card-table {
   width: 85%;
   max-width: 1400px;
   margin: 0 auto;
@@ -8,21 +8,21 @@
   padding: 32px 16px;
 }
 
-.game-table-top {
+.card-table-top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 1vw;
 }
 
-.game-table-bottom {
+.card-table-bottom {
   margin: 1vw;
 }
 
-.game-table-top-card-dealer {
+.card-table-top-card-dealer {
   width: 20%;
 }
 
-.game-table-top-completed-cards {
+.card-table-top-completed-cards {
   width: 80%;
 }

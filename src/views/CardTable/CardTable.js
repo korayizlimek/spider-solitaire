@@ -59,15 +59,15 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
   };
 
   return (
-    <div className="game-table">
-      <div className="game-table-top">
-        <div className="game-table-top-card-dealer">
+    <div className="card-table">
+      <div className="card-table-top">
+        <div className="card-table-top-card-dealer">
           <CardDealer
             giveNewCardWhenCardDealerOnClick={giveNewCardWhenCardDealerOnClick}
             restart={restart}
           />
         </div>
-        <div className="game-table-top-completed-cards">
+        <div className="card-table-top-completed-cards">
           <CompletedCards
             completedCardSetCount={completedCardSetCount}
             restart={restart}
@@ -75,7 +75,7 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
         </div>
         <button onClick={() => handleCompletedCardSetCount()}>HACK</button>
       </div>
-      <div className="game-table-bottom">
+      <div className="card-table-bottom">
         <CardSlots
           restartCardSlots={restartCardSlots}
           drawCards={handleDrawCards}
