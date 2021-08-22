@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardSlots from "../../components/CardSlots";
 import CardDealer from "../../components/CardDealer";
 import CompletedCards from "../../components/CompletedCards";
@@ -19,6 +19,7 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
   const [completedCardSetCount, setCompletedCardSetCount] = useState(
     INITIAL_COMPLETE_SLOTS
   );
+  const [restartCardSlots, setRestartCardSlots] = useState(false);
 
   useEffect(() => {
     if (completedCardSetCount === COMPLETE_CARD_COUNT_FOR_GAME_OVER) {
@@ -26,22 +27,18 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
     }
   }, [completedCardSetCount]);
 
+  useEffect(() => {
+    setGameDeck(shuffedDeck);
+    setCompletedCardSetCount(INITIAL_COMPLETE_SLOTS);
+    handleRestartCardSlots();
+  }, [restart]);
+
   const handleDrawCards = (n) => {
-    const [drawnCards, retainedCardsWhenDrawnCards] = drawCards(gameDeck, n); //104
+    const [drawnCards, retainedCardsWhenDrawnCards] = drawCards(gameDeck, n);
     setGameDeck(retainedCardsWhenDrawnCards);
 
     return drawnCards;
   };
-
-  const firstUpdate = useRef(true);
-  useEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-      return;
-    }
-    setGameDeck(shuffedDeck);
-    setCompletedCardSetCount(INITIAL_COMPLETE_SLOTS);
-  }, [restart]);
 
   const giveNewCardWhenCardDealerOnClick = () => {
     setGiveNewCard(true);
@@ -55,6 +52,10 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
   const handleCompletedCardSetCount = () => {
     setCompletedCardSetCount(completedCardSetCount + 1);
     addScore(500, true);
+  };
+
+  const handleRestartCardSlots = () => {
+    setRestartCardSlots(!restartCardSlots);
   };
 
   return (
@@ -76,7 +77,7 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
       </div>
       <div className="game-table-bottom">
         <CardSlots
-          restart={restart}
+          restartCardSlots={restartCardSlots}
           drawCards={handleDrawCards}
           giveNewCard={giveNewCard}
           doneGiveNewCard={doneGiveNewCard}

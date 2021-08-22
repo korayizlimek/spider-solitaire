@@ -20,6 +20,13 @@ const Header = ({ restart, pressRestart, score, gameOver }) => {
   }, [gameOver]);
 
   useEffect(() => {
+    stopCounter();
+    startCounter();
+    setSeconds(0);
+    setMinutes(0);
+  }, [restart]);
+
+  useEffect(() => {
     if (seconds === 60) {
       setSeconds(0);
       setMinutes(minutes + 1);

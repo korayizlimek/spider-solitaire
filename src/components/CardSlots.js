@@ -15,7 +15,7 @@ const CardSlots = ({
   giveNewCard,
   doneGiveNewCard,
   handleCompletedCardSetCount,
-  restart,
+  restartCardSlots,
   addScore,
 }) => {
   const [slots, setSlots] = useState([[], [], [], [], [], [], [], [], [], []]);
@@ -23,7 +23,7 @@ const CardSlots = ({
   useEffect(() => {
     const newSlots = drawCardsToSlots(INITIAL_SLOTS_CARD_COUNT, drawCards);
     setSlots(newSlots);
-  }, [restart]);
+  }, [restartCardSlots]);
 
   useEffect(() => {
     if (giveNewCard) {
