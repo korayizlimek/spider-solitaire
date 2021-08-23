@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Reserve Spider Solitaire
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The final project of 112. Trendyol Frond-End Bootcamp is reverse spider solitaire just like spider solitaire. There is a simple difference. The aim of the game is to arrange the cards from A to K. The game is over when the cards have been successfully lined up eight times.
 
-## Available Scripts
+## Technologies
 
-In the project directory, you can run:
+- React Js
+- SASS
+- Jest
+- Cypess
+- Heroku
+- React Dnd
 
-### `yarn start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[Reverse Spider Solitaire App](https://reverse-spider-solitaire.herokuapp.com/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Scoring System
 
-### `yarn test`
+- The game starts from 1000 points at the beginning.
+- Each card move loses 10 points.
+- When a set of cards is made (in order Ace-2-3-4-5-6-7-8-9-10-Jack-Queen-King), 500 points are earned.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## App Performance
 
-### `yarn build`
+![lighthouse](preview/lighthouse.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Unit Testing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Jest](preview/jest.png)
+![testSuits](preview/testsuits.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Preview
 
-### `yarn eject`
+### Drag And Drop
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Drop And Drag](preview/dragdrop.gif)
+![Slot](preview/slot.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Kart Cek desteden
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Deck](preview/deck.gif)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Warning
 
-## Learn More
+![Warning](preview/notification.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Restart
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Restart](preview/restart.gif)
 
-### Code Splitting
+### Complete A Card Set
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Complete](preview/complete.gif)
 
-### Analyzing the Bundle Size
+### Game Over
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Game Over](preview/gameover.gif)
