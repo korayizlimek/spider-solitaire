@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ClosedCard from "./ClosedCard";
+import _ from "lodash";
 
 const CLOSED_CARD_SET = 5;
 
@@ -18,8 +19,8 @@ const CardDealer = ({ giveNewCardWhenCardDealerOnClick, restart }) => {
 
   return (
     <div className="cardDealer" onClick={handleOnClick}>
-      {[...Array(closedCardSet)].map(() => (
-        <ClosedCard />
+      {_.times(closedCardSet, (index) => (
+        <ClosedCard key={index} />
       ))}
     </div>
   );

@@ -20,8 +20,6 @@ import { useState } from "react";
 const CardImage = ({ card }) => {
   const { name, suit, isOpen } = card;
   const [cardImage, setCardImage] = useState();
-  const url =
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/10S.svg/171px-10S.svg.png";
   const cardImages = {
     SpadeA,
     Spade2,

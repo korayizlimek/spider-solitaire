@@ -42,7 +42,7 @@ const Header = ({ restart, pressRestart, score, gameOver }) => {
       setSeconds((prevState) => prevState + 1);
     }, 1000));
 
-  const time = (time) => (time > 10 ? time : `0${time}`);
+  const time = (time) => (time > 9 ? time : `0${time}`);
 
   return (
     <header className="header">

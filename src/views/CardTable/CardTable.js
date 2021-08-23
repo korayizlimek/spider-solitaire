@@ -73,7 +73,6 @@ const CardTable = ({ restart, addScore, runGameOver }) => {
             restart={restart}
           />
         </div>
-        <button onClick={() => handleCompletedCardSetCount()}>HACK</button>
       </div>
       <div className="card-table-bottom">
         <CardSlots
