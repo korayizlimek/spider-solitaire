@@ -4,7 +4,7 @@ import { deleteCard } from "../slot/deleteCard";
 import { canDropRules } from "./dropRules";
 
 export const DndDrop = (cards, setIsAddCard) => {
-  const [{ isOver, canDrop, drop }, dropRef] = useDrop({
+  const [{}, dropRef] = useDrop({
     accept: "card",
     drop: (item) => dropFunction(item.selectedCardSet, cards, setIsAddCard),
     canDrop: (item) => canDropRules(item.card, cards),

@@ -1,25 +1,27 @@
 import React, { useEffect } from "react";
 
-import SpadeA from "../assets/images/spades/spades_01.png";
-import Spade2 from "../assets/images/spades/spades_02.png";
-import Spade3 from "../assets/images/spades/spades_03.png";
-import Spade4 from "../assets/images/spades/spades_04.png";
-import Spade5 from "../assets/images/spades/spades_05.png";
-import Spade6 from "../assets/images/spades/spades_06.png";
-import Spade7 from "../assets/images/spades/spades_07.png";
-import Spade8 from "../assets/images/spades/spades_08.png";
-import Spade9 from "../assets/images/spades/spades_09.png";
-import Spade10 from "../assets/images/spades/spades_10.png";
-import SpadeJ from "../assets/images/spades/spades_11.png";
-import SpadeQ from "../assets/images/spades/spades_12.png";
-import SpadeK from "../assets/images/spades/spades_13.png";
-import cardBeck from "../assets/images/card_back.png";
+import SpadeA from "../assets/svg/images/Aceofspades.svg";
+import Spade2 from "../assets/svg/images/2S.svg";
+import Spade3 from "../assets/svg/images/3S.svg";
+import Spade4 from "../assets/svg/images/4S.svg";
+import Spade5 from "../assets/svg/images/5S.svg";
+import Spade6 from "../assets/svg/images/6S.svg";
+import Spade7 from "../assets/svg/images/7S.svg";
+import Spade8 from "../assets/svg/images/8S.svg";
+import Spade9 from "../assets/svg/images/9S.svg";
+import Spade10 from "../assets/svg/images/10S.svg";
+import SpadeJ from "../assets/svg/images/JS.svg";
+import SpadeQ from "../assets/svg/images/QS.svg";
+import SpadeK from "../assets/svg/images/KS.svg";
+import cardBack from "../assets/svg/images/Card_back.svg";
+
 import { useState } from "react";
 
 const CardImage = ({ card }) => {
   const { name, suit, isOpen } = card;
   const [cardImage, setCardImage] = useState();
-
+  const url =
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/10S.svg/171px-10S.svg.png";
   const cardImages = {
     SpadeA,
     Spade2,
@@ -57,8 +59,8 @@ const CardImage = ({ card }) => {
         <img
           data-testid="cardBack"
           className="card-img"
-          src={cardBeck}
-          alt={cardBeck}
+          src={cardBack}
+          alt={cardBack}
         />
       )}
     </div>
