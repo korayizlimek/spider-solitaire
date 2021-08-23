@@ -48,13 +48,13 @@ const Header = ({ restart, pressRestart, score, gameOver }) => {
     <header className="header">
       <div className="header-section time-section">
         <img src={sandClockIcon} alt="sandClock icon" />
-        <p>
+        <p className="time">
           {time(minutes)}:{time(seconds)}
         </p>
       </div>
       <div className="header-section score-section">
         <img src={cupIcon} alt="cup icon" />
-        <p>{score}</p>
+        <p className="score">{score}</p>
       </div>
       <button
         onClick={() => {
@@ -63,7 +63,7 @@ const Header = ({ restart, pressRestart, score, gameOver }) => {
         className="header-section restart-section"
       >
         <img src={restartIcon} alt="restart icon" />
-        <p>Restart</p>
+        <p className="restart">Restart</p>
       </button>
     </header>
   );
