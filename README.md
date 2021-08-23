@@ -19,6 +19,7 @@ The final project of 112. Trendyol Frond-End Bootcamp is reverse spider solitair
 
 - The game starts from 1000 points at the beginning.
 - Each card move loses 10 points.
+- Each time the deck deals cards (10 cards are dealt once clicked), 50 points are lost.
 - When a set of cards is made (in order Ace-2-3-4-5-6-7-8-9-10-Jack-Queen-King), 500 points are earned.
 
 ## App Performance
@@ -30,6 +31,10 @@ The final project of 112. Trendyol Frond-End Bootcamp is reverse spider solitair
 ![Jest](preview/jest.png)
 ![testSuits](preview/testsuits.png)
 
+## End to End Testing
+
+![Cypess](preview/cypress.gif)
+
 ## Preview
 
 ### Drag And Drop
@@ -37,7 +42,7 @@ The final project of 112. Trendyol Frond-End Bootcamp is reverse spider solitair
 ![Drop And Drag](preview/dragdrop.gif)
 ![Slot](preview/slot.gif)
 
-### Kart Cek desteden
+### Draw Card From Deck
 
 ![Deck](preview/deck.gif)
 
