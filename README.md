@@ -1,6 +1,6 @@
 # Reserve Spider Solitaire
 
-The final project of 112. Trendyol Frond-End Bootcamp is reverse spider solitaire just like spider solitaire. There is a simple difference. The aim of the game is to arrange the cards from A to K. The game is over when the cards have been successfully lined up eight times.
+The final project is reverse spider solitaire just like spider solitaire. There is a simple difference. The aim of the game is to arrange the cards from A to K. The game is over when the cards have been successfully lined up eight times.
 
 ## Technologies
 
